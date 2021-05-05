@@ -16,8 +16,20 @@ class CLI():
 
     def start(self):
         print(f'\n{Format.BLUE}{Format.BOLD}Welcome to our Repo Finder{Format.CLEAR}\n')
-        fetch_repos()
-        self.menu()
+        self.get_username()
+
+    def get_username(self):
+        try:
+            self._username = input(f'''\n{Format.GREEN}Please enter your Github username!\n{Format.CLEAR}''')
+            if self._username == 'exit':
+                return self.goodbye()
+            # if not self.valid_username_input(self._user_input):
+            #     raise ValueError
+            self.fetch_repos(self._username)
+            self.menu
+        except ValueError:
+            print(f'{Format.RED}Sorry,that, Github username does not seem to exist.\nRetype a your Github username, or try a different one.{Format.CLEAR}\n')
+            self.menu()
 
     def menu(self):
         for idx, repo in enumerate(Repository.all, start=1):
@@ -46,6 +58,10 @@ class CLI():
     @staticmethod
     def valid_input(i):
         return int(i) > 0 and int(i) <= len(Repository.all)
+
+    # @staticmethod
+    # def valid_username_input(user):
+    #     return int(i) > 0 and int(i) <= len(Repository.all)
 
     @staticmethod
     def goodbye():
