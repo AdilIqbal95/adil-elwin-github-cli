@@ -6,5 +6,5 @@ def fetch_repos(username):
     URL = f'https://api.github.com/users/{username}/repos'
     req = requests.get(URL)
     for data in req.json():
-        House(data)
+        Repository(data)
     return data
