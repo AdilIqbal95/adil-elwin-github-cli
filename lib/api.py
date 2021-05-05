@@ -1,10 +1,9 @@
 import requests
-from .house import House
+from .repo import Repository
 
-URL = 'https://anapioficeandfire.com/api/houses'
-
-def fetch_houses():
-    ''' Call to API of Ice and Fire '''
+def fetch_repos(username):
+    ''' Call to Github API '''
+    URL = f'https://api.github.com/users/{username}/repos'
     req = requests.get(URL)
     for data in req.json():
         House(data)

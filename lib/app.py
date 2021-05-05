@@ -21,35 +21,35 @@ class CLI():
 
     def menu(self):
         for idx, repo in enumerate(Repository.all, start=1):
-            print(f'{idx}. {house.name}')
+            print(f'{idx}. {repo.name}')
         self.get_user_choice()
 
     def get_user_choice(self):
         try:
-            self._user_input = input(f'''\n{Format.BLUE}Which house would you like see more info for?\n{Format.CLEAR}''')
+            self._user_input = input(f'''\n{Format.BLUE}Type the number of the repo for which you would like more info.\n{Format.CLEAR}''')
             if self._user_input == 'exit':
                 return self.goodbye()
             if not self.valid_input(self._user_input):
                 raise ValueError
-            self.show_house()
+            self.show_repo()
             self.get_user_choice()
         except ValueError:
-            print(f'{Format.RED}Sorry,that is not a valid input.{Format.CLEAR}\n')
+            print(f'{Format.RED}Sorry,that is not a valid input.  Try typing a number from the displayed list.{Format.CLEAR}\n')
             self.menu()
 
-    def show_house(self):
-        house = House.find_by_input(self._user_input)
-        print(f'\n{Format.BLUE}{Format.BOLD}{house.name}{Format.CLEAR}')
-        print(f'\tRegion: {house.region}')
-        print(f'\tInsignia: {house.insignia}')
+    def show_repo(self):
+        repo = Repository.find_by_input(self._user_input)
+        print(f'\n{Format.BLUE}{Format.BOLD}{repo.name}{Format.CLEAR}')
+        print(f'\tURL: {repo.url}')
+        print(f'\tLanguage: {repo.language}')
 
     @staticmethod
     def valid_input(i):
-        return int(i) > 0 and int(i) <= len(House.all)
+        return int(i) > 0 and int(i) <= len(Repository.all)
 
     @staticmethod
     def goodbye():
-        print(f'\n{Format.BLUE}{Format.BOLD}May the North be with you.{Format.CLEAR}\n')
+        print(f'\n{Format.BLUE}{Format.BOLD}Thank you for using our app.\nWe hope you had a repositive experience!{Format.CLEAR}\n')
 
 if __name__ == '__main__':
     app = CLI()
