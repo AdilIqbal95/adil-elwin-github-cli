@@ -16,9 +16,9 @@ _Note: make sure you have [pipenv installed](https://github.com/getfutureproof/f
     - [x] Request username
     - [ ] Add error handling for dodgy request
   - [x] A request is made to `https://api.github.com/users/<username>/repos`
-  - [ ] API data is turned into instances of Repository class
-    - [ ] Convert data from API fetch
-    - [ ] Create repository class
+  - [x] API data is turned into instances of Repository class
+    - [x] Convert data from API fetch
+    - [x] Create repository class
   - [x] User is shown a numbered list their repos by name
   - [x] User can input a number to see more details on the corresponding repository
 
