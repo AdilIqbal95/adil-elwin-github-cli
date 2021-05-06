@@ -1,5 +1,5 @@
 ''' Defining the House class '''
-class House():
+class Repository():
     all = []
 
     def __init__(self, data):
