@@ -24,17 +24,15 @@ class CLI():
             self._username = input(f'''\nPlease enter your Github username!\n''')
             if self._username == 'exit':
                 return self.goodbye()
-            # if not self.valid_username_input(self._user_input):
-            #     raise ValueError
             fetch_repos(self._username)
             self.menu()
-        except ValueError:
-            print(f'Sorry,that, Github username does not seem to exist.\nRetype a your Github username, or try a different one.\n')
-            self.menu()
+        # except ValueError:
+        #     print(f'Sorry,that, Github username does not seem to exist.\nRetype a your Github username, or try a different one.\n')
+        #     self.menu()
 
     def menu(self):
         for idx, repo in enumerate(Repository.all, start=1):
-            print(f'{idx}. {repo._name}')
+            print(f'{idx}. {repo.name}')
         self.get_user_choice()
 
     def get_user_choice(self):
