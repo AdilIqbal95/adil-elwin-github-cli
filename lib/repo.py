@@ -1,11 +1,11 @@
-''' Defining the House class '''
-class House():
+''' Defining the Repository class '''
+class Repository():
     all = []
 
     def __init__(self, data):
-        self._name = data['name']
-        self._region = data['region']
-        self._insignia = data['coatOfArms']
+        self._name = data["name"]
+        self._url = data["url"]
+        self._language = data["language"]
         self._save()
 
     def _save(self):
@@ -16,12 +16,12 @@ class House():
         return self._name
     
     @property
-    def region(self):
-        return self._region
+    def url(self):
+        return self._url
 
     @property
-    def insignia(self):
-        return self._insignia
+    def language(self):
+        return self._language
     
     @classmethod
     def find_by_input(cls, user_input):
